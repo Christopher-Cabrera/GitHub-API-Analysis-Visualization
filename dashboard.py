@@ -3,7 +3,6 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 import requests
-from bs4 import BeautifulSoup
 import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
