@@ -42,6 +42,24 @@ all_topics = sorted({
 
 selected_topics = st.sidebar.multiselect("Project Topics (Type to Search)", options=all_topics)
 
+filtered_df = df[
+df["language"].isin(selected_languages)].copy()
+if selected_topics: 
+    filtered_df = filtered_df[filtered_df["topics"].apply(
+        lambda topics: any(
+            topic in [
+                t.strip()
+                for t in str(topics).split(",")
+            ]
+            for topic in selected_topics
+        )
+    )]
+st.caption(f"Showing {len(filtered_df):,} of {len(df):,} repositories")
+
+
+
+
+
 from queries import get_most_starred
 st.title("Favorite Git Repos")
 df1= get_most_starred()
