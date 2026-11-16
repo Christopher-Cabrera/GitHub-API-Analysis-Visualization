@@ -75,7 +75,7 @@ st.bar_chart(data=df2_sorted,x="language", y="total_stargazers", sort=False)
 from queries import get_most_issues
 st.title("Most Problematic Git Repos")
 df3 = get_most_issues()
-fig = px.bar(df3, x="name", y= "open issues", hover_data=["forks"], title="Most Problematic Git Repos")
+fig = px.scatter(df3, x="name", y= "open issues", color="forks", hover_data=["name"], title="Most Problematic Git Repos")
 st.plotly_chart(fig, use_container_width=True)
 
 from queries import get_most_issues_corr
